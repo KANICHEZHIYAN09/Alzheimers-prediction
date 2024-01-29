@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alzheimer's Prediction</title>
+     <link rel="stylesheet" type="text/css" href="static\style.css">
+  
+</head>
+<body>
+    <div class="pr-1">
+        <section class="page-section bg-dark text-white" id="predict">
+    <h1>Alzheimer's Prediction</h1>
+    <h3>(Alzheimers prediction when the patient has their Memory Test Score)</h3>
+    <form id="predictionForm">
+        <label for="age">Age:</label>
+        <input type="number" id="age" placeholder="Enter age" required><br>
+        
+        <label for="education">Education Level:</label>
+        <select id="education" required>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select><br>
+
+        <label for="memoryScore">Memory Test Score:</label>
+        <input type="number" id="memoryScore" placeholder="Enter memory test score" required><br>
+
+        <button type="button" onclick="predictAlzheimers()">Predict Alzheimer's</button>
+    </form>
+    <p id="result"></p>
+    <br>
+    <br>
+</div>
+<div class="pr-2">
+    <h1>Alzheimers Prediction</h1>
+    <h3>(Alzheimers prediction when the patient has their resonance image)</h3>
+    <form action="/predict" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+    <div id="upload-btn-wrapper">
+        <button class="btn">Upload an Image</button>
+        <input type="file" name="image" id="upload-file" class="upload-input" accept=".jpg, .jpeg, .png">
+    </div>
+    <div id="image-preview"></div>
+    <button type="submit" class="btn" name="classify"><FONTCOLOR=black>Make Prediction</button>
+</form>
+    <div id="upload-file-info" style="max-width: 200px; margin-top: 20px;"></div>
+</div>
+</section>
+<section class="page-section" id="predict">
+    <div class="frame">
+<div>
+<h3 class="result"><p>The Predicted result is  <b> {{prediction}} </b></p></h3>
+</div>
+</div>
+</section>
+    <script>
+        function predictAlzheimers() {
+            const age = document.getElementById('age').value;
+            const education = document.getElementById('education').value;
+            const memoryScore = document.getElementById('memoryScore').value;
+
+            // Simulate a prediction based on some simple logic (for educational purposes)
+            const isAlzheimers = age > 70 && education === 'low' && memoryScore < 20;
+
+            // Display the result
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = isAlzheimers ? 'Alzheimer\'s Predicted' : 'No Alzheimer\'s Predicted';
+        }
+
+        
+    
+    </script>
+        
+</body>
+</html>
